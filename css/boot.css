@@ -3,7 +3,7 @@
   width: 100%;
   height: 100%;
   background-color: #01717e;
-  animation: hideit 0.25s steps(1, end) 3s forwards;
+  animation: hideit 0s steps(1) 3s forwards;
 }
 
 #console {
@@ -30,7 +30,7 @@
   padding-left: 5px;
   overflow: hidden;
   height: 290px;
-  animation: writeit 0.75s steps(18, end) 2s forwards;
+  animation: writeit 0.75s steps(18) 2s forwards;
   margin: 0;
 }
 

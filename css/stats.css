@@ -5,7 +5,8 @@
     width: 175px;
     display: flex;
     flex-direction: column;
-    opacity: 0;
+    
+    visibility: hidden;
     animation: appear 0s linear 3.75s forwards, unfocus 0s steps(1) 4s forwards;
 }
 

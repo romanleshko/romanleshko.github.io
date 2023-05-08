@@ -12,7 +12,7 @@ pre {
     left: 25px;
     box-sizing: border-box;
 
-    opacity: 0;
+    visibility: hidden;
     animation: appear 0s linear 4s forwards, unfocus 0s steps(1) 4.5s forwards;
 }
 
