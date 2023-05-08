@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman Leshko</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stats.css">
+    <link rel="stylesheet" href="css/term.css">
+    <link rel="stylesheet" href="css/acme.css">
+    <script src="main.js"></script>
+</head>
+<body>
+  <div id="monitor">
+    <div id="screen">
+
+      <div id="stats">
+        <div id="topbar">leshko(4)</div>
+        <div id="load" class="stat">
+          <div class="label">l</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 50%;"></div>
+            <div id="loadlevel"></div>
+          </div>
+        </div>
+        <div id="mem" class="stat">
+          <div class="label">m</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 60%;"></div>
+            <div id="memlevel"></div>
+          </div>
+        </div>
+        <div id="intr" class="stat">
+          <div class="label">i</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 70%;"></div>
+            <div id="intrlevel"></div>
+          </div>
+        </div>
+        <div id="syscall" class="stat">
+          <div class="label">s</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 60%;"></div>
+            <div id="syscalllevel"></div>
+          </div>
+        </div>
+        <div id="context" class="stat">
+          <div class="label">c</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 75%;"></div>
+            <div id="contextlevel"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="term">
+        <div id="scrollbar"> </div>
+        <div id="output">
+          cpu% gfetch
+          <pre>
+             roman@leshko
+    (\(\     -----------
+   j". ..    os: Plan 9 from 9front/arm64
+   (  . .)   shell: /bin/rc
+   |   ° ¡   uptime: <span id="uptime"></span>
+   ¿     ;   ram: 89/256 MiB
+   c?".UJ    cpu: arm64
+             resolution: 1024 x 768
+             fs: hjfs
+             sdM0: 4 GiB
+          </pre>
+          cpu%
+        </div> 
+      </div>
+
+      <div id="acme">
+        <div id="mainbar" class="toprow">
+          Newcol Kill Putall Dump Exit
+        </div>
+        <div id="optbar" class="toprow">
+          <div class="rectangle"></div>
+          <div id="optcontent">New Cut Paste Snarf Sort Zerox Delcol</div>
+        </div>
+        <div id="filebar" class="toprow">
+          <div class="rectangle-outline"></div>
+          <div id="filecontent">/usr/roman/documents/motd.txt Del Snarf | Look</div>
+        </div>
+        <div id="editor">
+          <div id="acmebar"></div>
+          <div id="text">
+            <p>
+              Hi, I'm Roman. Welcome to leshko.pro(gramming)!
+            </p>
+            <p>
+              My website in style of the Plan9 from Bell Labs operating system.
+              I'm a software engineer and have been working professionally for `uptime`.
+            </p>
+            <p>
+              It all started when I got my first computer at age 9.
+              Since then I've been always tinkering with (and breaking) stuff which
+              led me to software development.
+            </p>
+            <p>I enjoy developing software and seeing my work being useful.</p>
+            <p>
+              Interests:<br>
+              * OS<br>
+              * Distributed systems<br>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="clock"</div>
+    </div>
+  </div>
+</body>
+</html>

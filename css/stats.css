@@ -1,0 +1,101 @@
+#stats {
+    position: absolute;
+    background-color: white;
+    border: 4px solid #9eefee;
+    width: 175px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: appear 0s linear 0.75s forwards;
+}
+
+.stat {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #515151;
+}
+
+.label {
+    border-right: 1px solid black;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0px 5px 1px 5px;
+}
+
+.graph {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emptyspace {
+    width: 100%;
+}
+
+#topbar {
+    padding-left: 15px;
+}
+
+#load {
+    background-color: #fceaea;
+}
+
+#loadlevel {
+    border-top: 2px solid #bb5b5b;
+    background-color: #e8a1a2;
+    box-sizing: border-box;
+    width: 0%;
+    height: 50%;
+    float: right;
+}
+
+#mem {
+    background-color: #eaffff;
+}
+
+#memlevel {
+    border-top: 2px solid #8888cc;
+    background-color: #9eefee;
+    box-sizing: border-box;
+    width: 0%;
+    height: 40%;
+    float: right;
+}
+
+#intr {
+    background-color: #feffea;
+}
+
+#intrlevel {
+    border-top: 2px solid #9a994c;
+    background-color: #d4d485;
+    box-sizing: border-box;
+    width: 0%;
+    height: 30%;
+    float: right;
+}
+
+#syscall {
+    background-color: #eaffea;
+}
+
+#syscalllevel {
+    border-top: 2px solid #448844;
+    background-color: #88cd88;
+    box-sizing: border-box;
+    width: 0%;
+    height: 40%;
+    float: right;
+}
+
+#context {
+    background-color: #c0ebff;
+}
+
+#contextlevel {
+    border-top: 2px solid #4788cd;
+    background-color: #59a7fb;
+    box-sizing: border-box;
+    width: 0%;
+    height: 25%;
+    float: right;
+}

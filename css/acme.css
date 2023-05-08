@@ -1,0 +1,64 @@
+#acme {
+    position: absolute;
+    background-color: white;
+    border: 4px solid #9eefee;
+    width: 450px;
+    height: 600px;
+    top: 25px;
+    right: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+    animation: appear 0s linear 1.25s forwards;
+}
+
+.toprow {
+    background-color: #eaffff;
+}
+
+#mainbar {
+    border-bottom: 2px solid black;
+    padding-left: 20px;
+}
+
+.rectangle {
+    background-color: #8888cc;
+    height:100%;
+    float:left;
+    width:15px;
+    box-sizing: border-box;
+    margin-right: 5px;
+}
+
+.rectangle-outline {
+    border: 2px solid #8888cc;
+    height:100%;
+    float:left;
+    width: 15px;
+    box-sizing: border-box;
+    margin-right: 5px;
+}
+
+#optbar {
+    border-bottom: 2px solid black;
+}
+
+#filebar {
+    border-bottom: 1px solid #8c8dcd;
+}
+
+#acmebar {
+    border-right: 2px solid #9a994c;
+    box-sizing: border-box;
+    float: left;
+    width: 15px;
+    height: 100%;
+    margin-right: 5px;
+}
+
+#editor {
+    background-color: #feffea;
+    height: 100%;
+}
