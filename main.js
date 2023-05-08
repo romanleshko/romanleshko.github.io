@@ -1,12 +1,6 @@
 window.onload = function() {
     getUptime(new Date("January 20, 2020"))
     updateDate();
-    
-    animateGraphLine("loadlevel");
-    animateGraphLine("memlevel");
-    animateGraphLine("intrlevel");
-    animateGraphLine("syscalllevel");
-    animateGraphLine("contextlevel");
 };
 
 function getUptime(target) {
@@ -52,17 +46,3 @@ function getDayOfWeek(day) {
     return daysOfWeek[day];
 }
 
-function animateGraphLine(elementId) {
-  let width = 0;
-  const element = document.getElementById(elementId);
-
-  const intervalId = setInterval(() => {
-    if (width >= 100) {
-      clearInterval(intervalId);
-      return;
-    }
-
-    width += 1;
-    element.style.width = `${width}%`;
-  }, 1000);
-}

@@ -1,7 +1,7 @@
 #acme {
     position: absolute;
     background-color: white;
-    border: 4px solid #9eefee;
+    border: 4px solid #55abaa;
     width: 450px;
     height: 600px;
     top: 25px;
@@ -11,7 +11,7 @@
     flex-direction: column;
 
     opacity: 0;
-    animation: appear 0s linear 1.25s forwards;
+    animation: appear 0s linear 4.5s forwards;
 }
 
 .toprow {

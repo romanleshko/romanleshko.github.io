@@ -1,12 +1,12 @@
 #stats {
     position: absolute;
     background-color: white;
-    border: 4px solid #9eefee;
+    border: 4px solid #55abaa;
     width: 175px;
     display: flex;
     flex-direction: column;
     opacity: 0;
-    animation: appear 0s linear 0.75s forwards;
+    animation: appear 0s linear 3.75s forwards, unfocus 0s steps(1) 4s forwards;
 }
 
 .stat {
@@ -46,6 +46,7 @@
     width: 0%;
     height: 50%;
     float: right;
+    animation: graphit 100s steps(100) 3.5s forwards;
 }
 
 #mem {
@@ -59,6 +60,7 @@
     width: 0%;
     height: 40%;
     float: right;
+    animation: graphit 100s steps(100) 3.5s forwards;
 }
 
 #intr {
@@ -72,6 +74,7 @@
     width: 0%;
     height: 30%;
     float: right;
+    animation: graphit 100s steps(100) 3.5s forwards;
 }
 
 #syscall {
@@ -85,6 +88,7 @@
     width: 0%;
     height: 40%;
     float: right;
+    animation: graphit 100s steps(100) 3.5s forwards;
 }
 
 #context {
@@ -98,4 +102,11 @@
     width: 0%;
     height: 25%;
     float: right;
+    animation: graphit 100s steps(100) 3.5s forwards;
+}
+
+@keyframes graphit {
+    to {
+        width: 100%;
+    }
 }

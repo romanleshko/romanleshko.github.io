@@ -13,7 +13,7 @@ pre {
     box-sizing: border-box;
 
     opacity: 0;
-    animation: appear 0s linear 1s forwards;
+    animation: appear 0s linear 4s forwards, unfocus 0s steps(1) 4.5s forwards;
 }
 
 #output {

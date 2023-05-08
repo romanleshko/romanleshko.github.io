@@ -1,59 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roman Leshko</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/boot.css">
     <link rel="stylesheet" href="css/stats.css">
     <link rel="stylesheet" href="css/term.css">
     <link rel="stylesheet" href="css/acme.css">
     <script src="main.js"></script>
-</head>
-<body>
-  <div id="monitor">
-    <div id="screen">
+  </head>
+  <body>
+    <div id="monitor">
+      <div id="screen">
+        <div id="bootscreen">
+          <div id="console">
+            <div id="bar">
+              Plan 9 Console
+            </div>
+            <pre id="boottext">
 
-      <div id="stats">
-        <div id="topbar">leshko(4)</div>
-        <div id="load" class="stat">
-          <div class="label">l</div>
-          <div class="graph">
-            <div class="emptyspace" style="height: 50%;"></div>
-            <div id="loadlevel"></div>
+
+Plan 9
+HPET: fed00000 8086a701 14 MHz
+124 holes free
+0x00025000 0x00058000 208896
+0x00059000 0x0005000 20480
+0x00100000 0x00110000 65536
+0x005dd000 0x7ffff000 2141331456
+2141626368 bytes free
+pcirouting: ignoring south bridge PCI.0.31.0 8086/8C4E
+cpu0: ARMv6-compatible processor [410fb767] revision 7 (ARMv7), cr=00c5387d
+LAPIC: fee00000 Oxffffff00fee00000
+ELCR: 0000
+cpu0: lapic clock at 99MHz
+1217: bad eepron checksum - Ox3aba: ignored
+#10: 1217: 1000Mbps port OxF7C00000 irq 5 ea 989096d183d0
+#S/sdE: ich: sata-Il with 2 ports
+#AO: hda men f7c30000 irq 3
+#AO: codec #0, vendor 10ec0280, rev 00100003
+usbehci: 0x8086 Ox8c2d: port f7c3c000 size 1024 irg 11 usbehci: 0x8086 0x8c26: port f7c3b000 size 1024 irq 11 
+usbxhei: 0x8086 0x8c31: port f7c20000 size 65536 irg 11
+256M memory: 2M kernel data, 0.5M user, 0M swap
+1217: phy2 oui 0×5500
+SdEO: LLBA 976,773, 168 sectors
+ST500DM002-1BD142 KC45 W36GCAD [neudrive]
+sdE1: LBA 0 sectors
+ISSTcorp DUD+/-RU SN-208FB D100 S13L6YEF6006QF [newdrivel
+/dev/sdEO: ST500DM002-1BD142 /dev/sdE0/data
+/dev/sdE1: TSSTcorpDUD+-RU SN-208FBD100 /dev/sdU3522: PNY USB 2.0 FD PMAP /dev/sdU352f2/data
+9660
+/dev/sdU352f2/esp dos
+            </pre>
           </div>
         </div>
-        <div id="mem" class="stat">
-          <div class="label">m</div>
-          <div class="graph">
-            <div class="emptyspace" style="height: 60%;"></div>
-            <div id="memlevel"></div>
+        <div id="stats">
+          <div id="topbar">leshko(4)</div>
+          <div id="load" class="stat">
+            <div class="label">l</div>
+            <div class="graph">
+              <div class="emptyspace" style="height: 50%;"></div>
+              <div id="loadlevel"></div>
+            </div>
+          </div>
+          <div id="mem" class="stat">
+            <div class="label">m</div>
+            <div class="graph">
+              <div class="emptyspace" style="height: 60%;"></div>
+              <div id="memlevel"></div>
+            </div>
+          </div>
+          <div id="intr" class="stat">
+            <div class="label">i</div>
+            <div class="graph">
+              <div class="emptyspace" style="height: 70%;"></div>
+              <div id="intrlevel"></div>
+            </div>
+          </div>
+          <div id="syscall" class="stat">
+            <div class="label">s</div>
+            <div class="graph">
+              <div class="emptyspace" style="height: 60%;"></div>
+              <div id="syscalllevel"></div>
+            </div>
+          </div>
+          <div id="context" class="stat">
+            <div class="label">c</div>
+            <div class="graph">
+              <div class="emptyspace" style="height: 75%;"></div>
+              <div id="contextlevel"></div>
+            </div>
           </div>
         </div>
-        <div id="intr" class="stat">
-          <div class="label">i</div>
-          <div class="graph">
-            <div class="emptyspace" style="height: 70%;"></div>
-            <div id="intrlevel"></div>
-          </div>
-        </div>
-        <div id="syscall" class="stat">
-          <div class="label">s</div>
-          <div class="graph">
-            <div class="emptyspace" style="height: 60%;"></div>
-            <div id="syscalllevel"></div>
-          </div>
-        </div>
-        <div id="context" class="stat">
-          <div class="label">c</div>
-          <div class="graph">
-            <div class="emptyspace" style="height: 75%;"></div>
-            <div id="contextlevel"></div>
-          </div>
-        </div>
-      </div>
 
       <div id="term">
         <div id="scrollbar"> </div>
@@ -91,10 +132,10 @@
           <div id="acmebar"></div>
           <div id="text">
             <p>
-              Hi, I'm Roman. Welcome to leshko.pro(gramming)!
+              Hi, I'm Roman. Welcome to leshko.pro(gramming)!<br>
+              Hope you enjoy my website in the style of the Plan 9 from Bell Labs operating system.
             </p>
             <p>
-              My website in style of the Plan9 from Bell Labs operating system.
               I'm a software engineer and have been working professionally for `uptime`.
             </p>
             <p>
@@ -102,7 +143,6 @@
               Since then I've been always tinkering with (and breaking) stuff which
               led me to software development.
             </p>
-            <p>I enjoy developing software and seeing my work being useful.</p>
             <p>
               Interests:<br>
               * OS<br>
