@@ -55,6 +55,7 @@ body {
     cursor: url(../img/cursor.svg), auto;
     visibility: hidden;
     animation: appear 0s steps(1) 1s forwards;
+    overflow: hidden;
 }
 
 
@@ -68,6 +69,15 @@ body {
     text-align: center;
     visibility: hidden;
     animation: appear 0s steps(1) 3s forwards;
+}
+
+.focused {
+    border-color: #55abaa!important;
+    color: black!important;
+}
+
+.unfocused {
+    border-color: #9eefee!important;
 }
 
 @keyframes appear {

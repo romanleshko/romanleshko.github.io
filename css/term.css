@@ -13,12 +13,7 @@ pre {
     box-sizing: border-box;
 
     visibility: hidden;
-    animation: appear 0s linear 4s forwards, unfocus 0s steps(1) 4.5s forwards;
-}
-
-#output {
-    box-sizing: border-box;
-    padding: 5px 0px 0px 5px;
+    animation: appear 0s linear 4s forwards, unfocusterm 0s steps(1) 5.25s forwards;
 }
 
 #scrollbar {
@@ -29,4 +24,49 @@ pre {
     height: 100%;
     margin-right: 5px;
 }
-  
+
+#prompt {
+    margin-top: 2px;
+    display: flex;
+}
+
+#command {
+    overflow: hidden;
+    width: 0px;
+    animation: typeit 0.25s steps(6) 4s forwards; 
+}
+
+#ps1 {
+    float: left;
+    margin-right: 0.5em;
+}
+
+#output {
+    overflow: hidden;
+    height: 0em;
+    animation: outputit 0.25s steps(2) 4.25s forwards;
+}
+
+#secondprompt {
+    visibility: hidden;
+    animation: appear 0s steps(1) 4.5s forwards;
+}
+
+@keyframes typeit {
+    to {
+        width: 48px;
+    }
+}
+
+@keyframes unfocusterm {
+    to {
+        border-color: #9eefee;
+        color: #666666;
+    }
+}
+
+@keyframes outputit {
+    to {
+        height: 10em;
+    }
+}

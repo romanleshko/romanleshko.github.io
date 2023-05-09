@@ -1,5 +1,43 @@
+let stats = document.getElementById("stats")
+let term = document.getElementById("term")
+let acme = document.getElementById("acme")
+let clock = document.getElementById("clock")
+
+let curFocus;
+let curZ = 1;
+
+const focus = function() {
+    curFocus.classList.remove("focused");
+    curFocus.classList.add("unfocused");
+    if (curFocus === term) {
+        curFocus.style.color = "#666666";
+    }
+
+    this.style.zIndex = curZ++;
+    this.classList.add("focused")
+    this.classList.remove("unfocused");
+    if (this === term) {
+        this.style.color = "black";
+    }
+    curFocus = this;
+}
+
+
 window.onload = function() {
+    stats = document.getElementById("stats")
+    term = document.getElementById("term")
+    acme = document.getElementById("acme")
+    clock = document.getElementById("clock")
+
+    curFocus = acme;
+    setTimeout(() => {
+        stats.addEventListener("click", focus);
+        term.addEventListener("click", focus);
+        acme.addEventListener("click", focus);
+    }, 5250)
+
     getUptime(new Date("January 20, 2020"))
+    getRam();
     updateDate();
 };
 
@@ -21,6 +59,11 @@ function getUptime(target) {
 
     document.getElementById("uptime").innerText = uptime;
 }
+
+function getRam() {
+   document.getElementById("ram").innerText = Math.floor(Math.random() * (107 - 40 + 1) + 40);
+}
+
 function updateDate() {
     const date = new Date();
     const year = date.getFullYear();

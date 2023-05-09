@@ -57,6 +57,7 @@ ISSTcorp DUD+/-RU SN-208FB D100 S13L6YEF6006QF [newdrivel
             </pre>
           </div>
         </div>
+
         <div id="stats">
           <div id="topbar">leshko(4)</div>
           <div id="load" class="stat">
@@ -96,27 +97,33 @@ ISSTcorp DUD+/-RU SN-208FB D100 S13L6YEF6006QF [newdrivel
           </div>
         </div>
 
-      <div id="term">
-        <div id="scrollbar"> </div>
-        <div id="output">
-          cpu% gfetch
-          <pre>
+        <div id="term">
+          <div id="scrollbar">
+          </div>
+          <div id="prompt">
+            <div id="ps1">
+              cpu%
+            </div>
+            <div id="command">
+              gfetch
+            </div>
+          </div>
+          <pre id="output">
              roman@leshko
     (\(\     -----------
    j". ..    os: Plan 9 from 9front/arm64
    (  . .)   shell: /bin/rc
    |   ° ¡   uptime: <span id="uptime"></span>
-   ¿     ;   ram: 89/256 MiB
+   ¿     ;   ram: <span id="ram"></span>/256 MiB
    c?".UJ    cpu: arm64
              resolution: 1024 x 768
              fs: hjfs
              sdM0: 4 GiB
           </pre>
-          cpu%
-        </div> 
-      </div>
+          <span id="secondprompt">cpu%</span>
+        </div>
 
-      <div id="acme">
+      <div id="acme"class="focused">
         <div id="mainbar" class="toprow">
           Newcol Kill Putall Dump Exit
         </div>
