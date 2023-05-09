@@ -3,23 +3,21 @@ let term = document.getElementById("term")
 let acme = document.getElementById("acme")
 let clock = document.getElementById("clock")
 
-let curFocus;
+let prevFocus;
 let curZ = 1;
 
 const focus = function() {
-    curFocus.classList.remove("focused");
-    curFocus.classList.add("unfocused");
-    if (curFocus === term) {
-        curFocus.style.color = "#666666";
+    prevFocus.style.setProperty("border-color", "#9eefee", "important");
+    if (prevFocus == term) {
+        prevFocus.style.setProperty("color", "#666666", "important");
     }
 
     this.style.zIndex = curZ++;
-    this.classList.add("focused")
-    this.classList.remove("unfocused");
-    if (this === term) {
-        this.style.color = "black";
+    this.style.setProperty("border-color", "#55abaa", "important");
+    if (this == term) {
+        this.style.setProperty("color", "black", "important");
     }
-    curFocus = this;
+    prevFocus = this;
 }
 
 
@@ -29,7 +27,7 @@ window.onload = function() {
     acme = document.getElementById("acme")
     clock = document.getElementById("clock")
 
-    curFocus = acme;
+    prevFocus = acme;
     setTimeout(() => {
         stats.addEventListener("click", focus);
         term.addEventListener("click", focus);

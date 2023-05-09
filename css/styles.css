@@ -71,14 +71,6 @@ body {
     animation: appear 0s steps(1) 3s forwards;
 }
 
-.focused {
-    border-color: #55abaa!important;
-    color: black!important;
-}
-
-.unfocused {
-    border-color: #9eefee!important;
-}
 
 @keyframes appear {
     to {
