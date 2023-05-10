@@ -6,10 +6,10 @@ pre {
     position: absolute;
     background-color: white;
     border: 4px solid #55abaa;
-    width: 500px;
+    width: 450px;
     height: 300px;
     top: 250px;
-    left: 25px;
+    left: 20px;
     box-sizing: border-box;
 
     visibility: hidden;

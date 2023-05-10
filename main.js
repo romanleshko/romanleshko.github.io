@@ -1,12 +1,108 @@
-let stats = document.getElementById("stats")
-let term = document.getElementById("term")
-let acme = document.getElementById("acme")
-let clock = document.getElementById("clock")
+'use strict';
+
+let screenEl;
+let stats, term, acme, clock;
+let topbar, promptEl, mainbar, dragBorder;
 
 let prevFocus;
 let curZ = 1;
 
-const focus = function() {
+let dragEl;
+let initialX, initialY; 
+
+window.onload = function() {
+    stats = document.getElementById("stats");
+    term = document.getElementById("term");
+    acme = document.getElementById("acme");
+    clock = document.getElementById("clock");
+
+    screenEl = document.getElementById("screen");
+    topbar = document.getElementById("topbar");
+    promptEl = document.getElementById("prompt");
+    mainbar = document.getElementById("mainbar");
+    dragBorder = document.getElementById("dragborder");
+
+    prevFocus = acme;
+    setTimeout(() => {
+        stats.addEventListener("click", changeFocus);
+        term.addEventListener("click", changeFocus);
+        acme.addEventListener("click", changeFocus);
+
+        topbar.addEventListener('mousedown', dragStart);
+        promptEl.addEventListener('mousedown', dragStart);
+        mainbar.addEventListener('mousedown', dragStart);
+
+        screenEl.addEventListener('mousemove', drag);
+        screenEl.addEventListener('mouseup', dragEnd);
+        screenEl.addEventListener('mouseleave', dragEnd);
+    }, 5250)
+
+    getUptime(new Date("January 20, 2020"));
+    getRam();
+    updateDate();
+};
+
+// Define the mouse event handlers
+function dragStart(event) {
+    event.preventDefault();
+    
+    changeFocus.call(this.parentElement);
+    initialX = event.clientX;
+    initialY = event.clientY;
+
+    dragEl = this.parentElement;
+
+    dragBorder.style.visibility = "visible";
+    dragBorder.style.left = `${dragEl.offsetLeft}px`;
+    dragBorder.style.top = `${dragEl.offsetTop}px`;
+    dragBorder.style.width = `${dragEl.offsetWidth}px`;
+    dragBorder.style.height = `${dragEl.offsetHeight}px`;
+    dragBorder.style.zIndex = curZ;
+}
+
+function drag(event) {
+    event.preventDefault();
+    if (!dragEl) return;
+    
+
+    const deltaX = event.clientX - initialX;
+    const deltaY = event.clientY - initialY;
+
+    let finalLeft = dragBorder.offsetLeft + deltaX;
+    const leftBound = 15 - dragBorder.offsetWidth;
+    if (finalLeft < leftBound) {
+        finalLeft = leftBound;
+    }
+    if (finalLeft > 990) {
+        finalLeft = 990;
+    }
+
+    let finalTop = dragBorder.offsetTop + deltaY;
+    if (finalTop < 0) {
+        finalTop = 0;
+    }
+    if (finalTop > 730) {
+        finalTop = 730;
+    }
+
+    dragBorder.style.left = `${finalLeft}px`;
+    dragBorder.style.top = `${finalTop}px`;
+
+    initialX = event.clientX;
+    initialY = event.clientY;
+}
+
+function dragEnd() {
+    if (!dragEl) return;
+    
+    dragEl.style.left = `${dragBorder.offsetLeft}px`;
+    dragEl.style.top = `${dragBorder.offsetTop}px`;
+    dragEl = null;
+
+    dragBorder.style.visibility = "hidden";
+}
+
+const changeFocus = function() {
     prevFocus.style.setProperty("border-color", "#9eefee", "important");
     if (prevFocus == term) {
         prevFocus.style.setProperty("color", "#666666", "important");
@@ -19,25 +115,6 @@ const focus = function() {
     }
     prevFocus = this;
 }
-
-
-window.onload = function() {
-    stats = document.getElementById("stats")
-    term = document.getElementById("term")
-    acme = document.getElementById("acme")
-    clock = document.getElementById("clock")
-
-    prevFocus = acme;
-    setTimeout(() => {
-        stats.addEventListener("click", focus);
-        term.addEventListener("click", focus);
-        acme.addEventListener("click", focus);
-    }, 5250)
-
-    getUptime(new Date("January 20, 2020"))
-    getRam();
-    updateDate();
-};
 
 function getUptime(target) {
     const now = new Date();
@@ -73,7 +150,7 @@ function updateDate() {
     const seconds = padZero(date.getSeconds());
 
     const now = `${year}/${month}/${day} ${dayOfWeek} ${hours}:${minutes}:${seconds}`;
-    document.getElementById("clock").innerText = now;
+    clock.innerText = now;
 
     setTimeout(updateDate, 1000);
 }
