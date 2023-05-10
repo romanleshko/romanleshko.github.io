@@ -2,7 +2,7 @@
 
 let screenEl;
 let stats, term, acme, clock;
-let topbar, promptEl, mainbar, dragBorder;
+let dragBorder;
 
 let prevFocus;
 let curZ = 1;
@@ -17,9 +17,6 @@ window.onload = function() {
     clock = document.getElementById("clock");
 
     screenEl = document.getElementById("screen");
-    topbar = document.getElementById("topbar");
-    promptEl = document.getElementById("prompt");
-    mainbar = document.getElementById("mainbar");
     dragBorder = document.getElementById("dragborder");
 
     prevFocus = acme;
@@ -28,9 +25,9 @@ window.onload = function() {
         term.addEventListener("click", changeFocus);
         acme.addEventListener("click", changeFocus);
 
-        topbar.addEventListener('mousedown', dragStart);
-        promptEl.addEventListener('mousedown', dragStart);
-        mainbar.addEventListener('mousedown', dragStart);
+        stats.addEventListener('mousedown', dragStart);
+        term.addEventListener('mousedown', dragStart);
+        acme.addEventListener('mousedown', dragStart);
 
         screenEl.addEventListener('mousemove', drag);
         screenEl.addEventListener('mouseup', dragEnd);
@@ -46,11 +43,11 @@ window.onload = function() {
 function dragStart(event) {
     event.preventDefault();
     
-    changeFocus.call(this.parentElement);
+    changeFocus.call(this);
     initialX = event.clientX;
     initialY = event.clientY;
 
-    dragEl = this.parentElement;
+    dragEl = this;
 
     dragBorder.style.visibility = "visible";
     dragBorder.style.left = `${dragEl.offsetLeft}px`;
