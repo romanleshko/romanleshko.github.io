@@ -100,6 +100,8 @@ function dragEnd() {
 }
 
 const changeFocus = function() {
+    if (prevFocus == this) return;
+
     prevFocus.style.setProperty("border-color", "#9eefee", "important");
     if (prevFocus == term) {
         prevFocus.style.setProperty("color", "#666666", "important");
