@@ -14,6 +14,11 @@
     animation: appear 0s linear 5.25s forwards;
 }
 
+#acme > * {
+    visibility: hidden;
+    animation: appear 0s linear 5.50s forwards;
+}
+
 .toprow {
     background-color: #eaffff;
 }

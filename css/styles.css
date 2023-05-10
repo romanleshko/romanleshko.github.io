@@ -10,9 +10,9 @@ body {
 }
 
 #monitor {
-    border: 50px solid;
+    border: 75px solid;
     position: relative;
-    margin: 40px auto auto auto;
+    margin: 30px auto auto auto;
     width: 1024px;
     height: 768px;
     border-color: beige;
@@ -24,10 +24,10 @@ body {
 #monitor::before {
     content: "";
     position: absolute;
-    top: -60px;
-    left: -60px;
-    right: -60px;
-    bottom: -60px;
+    top: -85px;
+    left: -85px;
+    right: -85px;
+    bottom: -85px;
     border: 10px solid #171717;
     border-radius: 30px;
 }
