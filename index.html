@@ -1,27 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roman Leshko</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="Roman Leshko">
+  <meta name="description" content="Personal about me page in a retro computer style">
+  <meta name="keywords" content="software,developer,engineer,about,me,retro,style">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Leshko</title>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/boot.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/stats.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/term.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="css/acme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/boot.css">
     <link rel="stylesheet" href="css/stats.css">
     <link rel="stylesheet" href="css/term.css">
     <link rel="stylesheet" href="css/acme.css">
-    <script src="main.js"></script>
-  </head>
-  <body>
-    <div id="monitor">
-      <div id="screen">
-        <div id="bootscreen">
-          <div id="console">
-            <div id="bar">
-              Plan 9 Console
-            </div>
-            <pre id="boottext">
+  </noscript>
+
+  <style>
+    body {
+      font-family: 'Classic Console Neue', monospace;
+      line-height: 1em;
+      background-image: repeating-linear-gradient(0deg, rgb(41, 41, 41) 0px, rgb(41, 41, 41) 1px, transparent 1px, transparent 21px), repeating-linear-gradient(90deg, rgb(41, 41, 41) 0px, rgb(41, 41, 41) 1px, transparent 1px, transparent 21px), linear-gradient(90deg, hsl(87, 0%, 9%), hsl(87, 0%, 9%));
+    }
+
+    #monitor {
+      border: 75px solid;
+      position: relative;
+      margin: 30px auto auto auto;
+      width: 1024px;
+      height: 768px;
+      border-color: beige;
+      border-image-source: repeating-linear-gradient(0deg, hsl(0deg 0% 95%), hsl(0deg 0% 95%) 2px, hsl(0deg 0% 90%) 0 4px);
+      border-image-slice: 25;
+      background-color: black;
+    }
+
+    #monitor::before {
+      content: "";
+      position: absolute;
+      top: -85px;
+      left: -85px;
+      right: -85px;
+      bottom: -85px;
+      border: 10px solid #171717;
+      border-radius: 30px;
+    }
+
+    #monitor::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 10px solid;
+      border-color: hsl(0deg 0% 80%) hsl(0deg 0% 95%) hsl(0deg 0% 90%) hsl(0deg 0% 75%);
+      border-radius: 30px;
+      pointer-events: none;
+    }
+
+    #display {
+      position: absolute;
+      background-color: #777;
+      height: 100%;
+      width: 100%;
+      border: 10px solid black;
+      box-sizing: border-box;
+      cursor: url(../img/cursor.svg), auto;
+      visibility: hidden;
+      animation: appear 0s steps(1) 1s forwards;
+      overflow: hidden;
+    }
+  </style>
+
+  <script defer src="main.js"></script>
+</head>
+
+<body>
+  <div id="monitor">
+    <div id="display">
+      <div id="bootscreen">
+        <div id="console">
+          <div id="bar">
+            Plan 9 Console
+          </div>
+          <pre id="boottext">
 
 
 Plan 9
@@ -55,60 +128,60 @@ ISSTcorp DUD+/-RU SN-208FB D100 S13L6YEF6006QF [newdrivel
 9660
 /dev/sdU352f2/esp dos
             </pre>
+        </div>
+      </div>
+
+      <div id="stats">
+        <div id="topbar">leshko(4)</div>
+        <div id="load" class="stat">
+          <div class="label">l</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 50%;"></div>
+            <div id="loadlevel"></div>
           </div>
         </div>
-
-        <div id="stats">
-          <div id="topbar">leshko(4)</div>
-          <div id="load" class="stat">
-            <div class="label">l</div>
-            <div class="graph">
-              <div class="emptyspace" style="height: 50%;"></div>
-              <div id="loadlevel"></div>
-            </div>
-          </div>
-          <div id="mem" class="stat">
-            <div class="label">m</div>
-            <div class="graph">
-              <div class="emptyspace" style="height: 60%;"></div>
-              <div id="memlevel"></div>
-            </div>
-          </div>
-          <div id="intr" class="stat">
-            <div class="label">i</div>
-            <div class="graph">
-              <div class="emptyspace" style="height: 70%;"></div>
-              <div id="intrlevel"></div>
-            </div>
-          </div>
-          <div id="syscall" class="stat">
-            <div class="label">s</div>
-            <div class="graph">
-              <div class="emptyspace" style="height: 60%;"></div>
-              <div id="syscalllevel"></div>
-            </div>
-          </div>
-          <div id="context" class="stat">
-            <div class="label">c</div>
-            <div class="graph">
-              <div class="emptyspace" style="height: 75%;"></div>
-              <div id="contextlevel"></div>
-            </div>
+        <div id="mem" class="stat">
+          <div class="label">m</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 60%;"></div>
+            <div id="memlevel"></div>
           </div>
         </div>
+        <div id="intr" class="stat">
+          <div class="label">i</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 70%;"></div>
+            <div id="intrlevel"></div>
+          </div>
+        </div>
+        <div id="syscall" class="stat">
+          <div class="label">s</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 60%;"></div>
+            <div id="syscalllevel"></div>
+          </div>
+        </div>
+        <div id="context" class="stat">
+          <div class="label">c</div>
+          <div class="graph">
+            <div class="emptyspace" style="height: 75%;"></div>
+            <div id="contextlevel"></div>
+          </div>
+        </div>
+      </div>
 
-        <div id="term">
-          <div id="scrollbar">
+      <div id="term">
+        <div id="scrollbar">
+        </div>
+        <div id="prompt">
+          <div id="ps1">
+            cpu%
           </div>
-          <div id="prompt">
-            <div id="ps1">
-              cpu%
-            </div>
-            <div id="command">
-              gfetch
-            </div>
+          <div id="command">
+            gfetch
           </div>
-          <pre id="output">
+        </div>
+        <pre id="output">
              roman@leshko
     (\(\     -----------
    j". ..    os: Plan 9 from 9front/arm64
@@ -120,59 +193,61 @@ ISSTcorp DUD+/-RU SN-208FB D100 S13L6YEF6006QF [newdrivel
              fs: hjfs
              sdM0: 4 GiB
           </pre>
-          <span id="secondprompt">cpu%</span>
-        </div>
-
-        <div id="acme">
-            <div id="mainbar" class="toprow">
-                Newcol Kill Putall Dump Exit
-            </div>
-            <div id="optbar" class="toprow">
-                <div class="rectangle"></div>
-                <div id="optcontent">New Cut Paste Snarf Sort Zerox Delcol</div>
-            </div>
-            <div id="filebar" class="toprow">
-                <div class="rectangle-outline"></div>
-                <div id="filecontent">/usr/roman/documents/motd.txt Del Snarf | Look</div>
-            </div>
-            <div id="editor">
-                <div id="acmebar"></div>
-                <div id="text">
-                    <p>
-                    Hey, I'm Roman Leshko.<br>
-                    Welcome to leshko.pro(gramming)!
-                    <p>
-                    I hope you enjoy my website in the style of the Plan 9 from Bell Labs, 
-                    an operating system for researchers and hobbyists.
-                    </p>
-                    <p>
-                    You can move the windows around by dragging them.
-                    </p>
-                    <p>
-                    I'm a software engineer and have been working professionally for `uptime`.
-                    </p>
-                    <p>
-                    I aim to build software that provides tangible value and meets with real-world needs.<br> 
-                    I strongly believe in considering the underlying purpose of our technology and its potential impact on the world around us.<br>
-                    </p>
-                    <p>
-                    And of course, I'm down to just build some cool stuff as well :)
-                    </p>
-                    <p>
-                    If this resonates with you, then I'd probably be happy to work with you!<br>
-                    </p>
-                    <p>
-                    Other interests of mine include:<br>
-                    * Music production<br>
-                    * Organic farming<br>
-                    * Fitness<br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div id="dragborder"></div>
-        <div id="clock"</div>
+        <span id="secondprompt">cpu%</span>
       </div>
+
+      <div id="acme">
+        <div id="mainbar" class="toprow">
+          Newcol Kill Putall Dump Exit
+        </div>
+        <div id="optbar" class="toprow">
+          <div class="rectangle"></div>
+          <div id="optcontent">New Cut Paste Snarf Sort Zerox Delcol</div>
+        </div>
+        <div id="filebar" class="toprow">
+          <div class="rectangle-outline"></div>
+          <div id="filecontent">/usr/roman/documents/motd.txt Del Snarf | Look</div>
+        </div>
+        <div id="editor">
+          <div id="acmebar"></div>
+          <div id="text">
+            <p>
+              Hey, I'm Roman Leshko.<br>
+              Welcome to leshko.pro(gramming)!
+            <p>
+              I hope you enjoy my website in the style of the Plan 9 from Bell Labs,
+              an operating system for researchers and hobbyists.
+            </p>
+            <p>
+              You can move the windows around by dragging them.
+            </p>
+            <p>
+              I'm a software engineer and have been working professionally for `uptime`.
+            </p>
+            <p>
+              I aim to build software that provides tangible value and meets with real-world needs.<br>
+              I strongly believe in considering the underlying purpose of our technology and its potential impact on the
+              world around us.<br>
+            </p>
+            <p>
+              And of course, I'm down to just build some cool stuff as well :)
+            </p>
+            <p>
+              If this resonates with you, then I'd probably be happy to work with you!<br>
+            </p>
+            <p>
+              Other interests of mine include:<br>
+              * Music production<br>
+              * Organic farming<br>
+              * Fitness<br>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="dragborder"></div>
+      <div id="clock"></div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

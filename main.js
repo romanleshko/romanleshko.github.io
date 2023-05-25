@@ -1,23 +1,12 @@
 'use strict';
 
-let screenEl;
-let stats, term, acme, clock;
-let dragBorder;
-
 let prevFocus;
 let curZ = 1;
 
 let dragEl;
-let initialX, initialY; 
+let initialX, initialY;
 
-window.onload = function() {
-    stats = document.getElementById("stats");
-    term = document.getElementById("term");
-    acme = document.getElementById("acme");
-    clock = document.getElementById("clock");
-
-    screenEl = document.getElementById("screen");
-    dragBorder = document.getElementById("dragborder");
+window.onload = function () {
 
     prevFocus = acme;
     setTimeout(() => {
@@ -29,9 +18,9 @@ window.onload = function() {
         term.addEventListener('mousedown', dragStart);
         acme.addEventListener('mousedown', dragStart);
 
-        screenEl.addEventListener('mousemove', drag);
-        screenEl.addEventListener('mouseup', dragEnd);
-        screenEl.addEventListener('mouseleave', dragEnd);
+        display.addEventListener('mousemove', drag);
+        display.addEventListener('mouseup', dragEnd);
+        display.addEventListener('mouseleave', dragEnd);
     }, 5250)
 
     getUptime(new Date("January 20, 2020"));
@@ -42,31 +31,31 @@ window.onload = function() {
 // Define the mouse event handlers
 function dragStart(event) {
     event.preventDefault();
-    
+
     changeFocus.call(this);
     initialX = event.clientX;
     initialY = event.clientY;
 
     dragEl = this;
 
-    dragBorder.style.visibility = "visible";
-    dragBorder.style.left = `${dragEl.offsetLeft}px`;
-    dragBorder.style.top = `${dragEl.offsetTop}px`;
-    dragBorder.style.width = `${dragEl.offsetWidth}px`;
-    dragBorder.style.height = `${dragEl.offsetHeight}px`;
-    dragBorder.style.zIndex = curZ;
+    dragborder.style.visibility = "visible";
+    dragborder.style.left = `${dragEl.offsetLeft}px`;
+    dragborder.style.top = `${dragEl.offsetTop}px`;
+    dragborder.style.width = `${dragEl.offsetWidth}px`;
+    dragborder.style.height = `${dragEl.offsetHeight}px`;
+    dragborder.style.zIndex = curZ;
 }
 
 function drag(event) {
     event.preventDefault();
     if (!dragEl) return;
-    
+
 
     const deltaX = event.clientX - initialX;
     const deltaY = event.clientY - initialY;
 
-    let finalLeft = dragBorder.offsetLeft + deltaX;
-    const leftBound = 15 - dragBorder.offsetWidth;
+    let finalLeft = dragborder.offsetLeft + deltaX;
+    const leftBound = 15 - dragborder.offsetWidth;
     if (finalLeft < leftBound) {
         finalLeft = leftBound;
     }
@@ -74,7 +63,7 @@ function drag(event) {
         finalLeft = 990;
     }
 
-    let finalTop = dragBorder.offsetTop + deltaY;
+    let finalTop = dragborder.offsetTop + deltaY;
     if (finalTop < 0) {
         finalTop = 0;
     }
@@ -82,8 +71,8 @@ function drag(event) {
         finalTop = 730;
     }
 
-    dragBorder.style.left = `${finalLeft}px`;
-    dragBorder.style.top = `${finalTop}px`;
+    dragborder.style.left = `${finalLeft}px`;
+    dragborder.style.top = `${finalTop}px`;
 
     initialX = event.clientX;
     initialY = event.clientY;
@@ -91,15 +80,15 @@ function drag(event) {
 
 function dragEnd() {
     if (!dragEl) return;
-    
-    dragEl.style.left = `${dragBorder.offsetLeft}px`;
-    dragEl.style.top = `${dragBorder.offsetTop}px`;
+
+    dragEl.style.left = `${dragborder.offsetLeft}px`;
+    dragEl.style.top = `${dragborder.offsetTop}px`;
     dragEl = null;
 
-    dragBorder.style.visibility = "hidden";
+    dragborder.style.visibility = "hidden";
 }
 
-const changeFocus = function() {
+const changeFocus = function () {
     if (prevFocus == this) return;
 
     prevFocus.style.setProperty("border-color", "#9eefee", "important");
@@ -135,7 +124,7 @@ function getUptime(target) {
 }
 
 function getRam() {
-   document.getElementById("ram").innerText = Math.floor(Math.random() * (107 - 40 + 1) + 40);
+    document.getElementById("ram").innerText = Math.floor(Math.random() * (107 - 40 + 1) + 40);
 }
 
 function updateDate() {
